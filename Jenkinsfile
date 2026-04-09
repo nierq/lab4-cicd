@@ -27,7 +27,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat 'C:\\msys64\\mingw64\\bin\\gcc.exe -o main main.c'
+                    bat 'C:\\msys64\\mingw64\\bin\\gcc.exe -o main.exe main.c'
                     if (!fileExists('./main.exe')) {
                         error "main.exe не знайдено. Етап Build міг пройти невдало."
                     }
