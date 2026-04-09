@@ -27,9 +27,12 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    bat 'dir'   // ← что вообще есть в папке ДО компиляции
                     bat 'C:\\msys64\\mingw64\\bin\\gcc.exe -o main.exe main.c'
+                    bat 'dir main.exe'
+                    echo "fileExists: ${fileExists('./main.exe')}"
                     if (!fileExists('./main.exe')) {
-                        error "main.exe не знайдено. Етап Build міг пройти невдало."
+                        error "main.exe не знайдено."
                     }
                 }
             }
